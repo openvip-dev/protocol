@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- OpenVIP Logo - Bright Orange #f97316 -->
+
+  <!-- Opening brace { -->
+  <path d="M 60 50 Q 45 50 45 65 L 45 90 Q 45 100 35 100 Q 45 100 45 110 L 45 135 Q 45 150 60 150"
+        fill="none" stroke="#f97316" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Three wave bars -->
+  <line x1="78" y1="85" x2="78" y2="115" stroke="#f97316" stroke-width="7" stroke-linecap="round"/>
+  <line x1="100" y1="65" x2="100" y2="135" stroke="#f97316" stroke-width="7" stroke-linecap="round"/>
+  <line x1="122" y1="80" x2="122" y2="120" stroke="#f97316" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Closing brace } -->
+  <path d="M 140 50 Q 155 50 155 65 L 155 90 Q 155 100 165 100 Q 155 100 155 110 L 155 135 Q 155 150 140 150"
+        fill="none" stroke="#f97316" stroke-width="7" stroke-linecap="round"/>
+</svg>

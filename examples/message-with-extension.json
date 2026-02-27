@@ -1,0 +1,16 @@
+{
+  "openvip": "1.0",
+  "type": "transcription",
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "timestamp": "2026-02-06T10:30:00Z",
+  "text": "fix the login bug",
+  "language": "en",
+  "confidence": 0.95,
+  "origin": "myapp/1.0.0",
+  "x_input": {
+    "submit": true,
+    "newline": false,
+    "trigger": "ok send",
+    "confidence": 0.95
+  }
+}

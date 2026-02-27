@@ -1,0 +1,327 @@
+[
+  {
+    "description": "Valid messages",
+    "tests": [
+      {
+        "description": "Minimal valid transcription",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello world"
+        },
+        "valid": true
+      },
+      {
+        "description": "Transcription with all optional fields",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "Turn on the kitchen light",
+          "origin": "myapp/1.0.0",
+          "language": "en",
+          "confidence": 0.95,
+          "partial": false
+        },
+        "valid": true
+      },
+      {
+        "description": "Partial transcription",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440002",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "Turn on the",
+          "partial": true,
+          "origin": "myapp/1.0.0"
+        },
+        "valid": true
+      },
+      {
+        "description": "Transcription with tracing",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "660e8400-e29b-41d4-a716-446655440001",
+          "timestamp": "2026-02-06T10:30:01Z",
+          "text": "ho un bug",
+          "language": "it",
+          "trace_id": "550e8400-e29b-41d4-a716-446655440000",
+          "parent_id": "550e8400-e29b-41d4-a716-446655440000"
+        },
+        "valid": true
+      },
+      {
+        "description": "Transcription with x_input extension",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "fix the login bug",
+          "x_input": {
+            "submit": true,
+            "newline": false,
+            "trigger": "ok send",
+            "confidence": 0.95
+          }
+        },
+        "valid": true
+      },
+      {
+        "description": "Transcription with x_agent_switch extension",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "",
+          "x_agent_switch": {
+            "target": "claude",
+            "confidence": 0.92
+          }
+        },
+        "valid": true
+      },
+      {
+        "description": "Speech request",
+        "data": {
+          "openvip": "1.0",
+          "type": "speech",
+          "id": "660e8400-e29b-41d4-a716-446655440001",
+          "timestamp": "2026-02-06T10:30:05Z",
+          "text": "Light turned on",
+          "language": "en"
+        },
+        "valid": true
+      },
+      {
+        "description": "Transcription with custom vendor extension",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "accendi la luce",
+          "x_bticino": {
+            "device": "kitchen_light",
+            "action": "on"
+          }
+        },
+        "valid": true
+      },
+      {
+        "description": "Transcription with confidence at boundary 0.0",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "mumble",
+          "confidence": 0.0
+        },
+        "valid": true
+      },
+      {
+        "description": "Transcription with confidence at boundary 1.0",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "crystal clear",
+          "confidence": 1.0
+        },
+        "valid": true
+      },
+      {
+        "description": "Transcription with unknown additional field (forward compatibility)",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello",
+          "future_field": "some value"
+        },
+        "valid": true
+      }
+    ]
+  },
+  {
+    "description": "Invalid messages",
+    "tests": [
+      {
+        "description": "Missing openvip",
+        "data": {
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello"
+        },
+        "valid": false
+      },
+      {
+        "description": "Missing type",
+        "data": {
+          "openvip": "1.0",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello"
+        },
+        "valid": false
+      },
+      {
+        "description": "Missing id",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello"
+        },
+        "valid": false
+      },
+      {
+        "description": "Missing timestamp",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "text": "hello"
+        },
+        "valid": false
+      },
+      {
+        "description": "Missing text",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z"
+        },
+        "valid": false
+      },
+      {
+        "description": "Invalid type enum",
+        "data": {
+          "openvip": "1.0",
+          "type": "message",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello"
+        },
+        "valid": false
+      },
+      {
+        "description": "Invalid type enum (old tts)",
+        "data": {
+          "openvip": "1.0",
+          "type": "tts",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello"
+        },
+        "valid": false
+      },
+      {
+        "description": "trace_id without parent_id",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello",
+          "trace_id": "550e8400-e29b-41d4-a716-446655440000"
+        },
+        "valid": false
+      },
+      {
+        "description": "parent_id without trace_id",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello",
+          "parent_id": "550e8400-e29b-41d4-a716-446655440000"
+        },
+        "valid": false
+      },
+      {
+        "description": "Confidence out of range (above 1.0)",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello",
+          "confidence": 1.5
+        },
+        "valid": false
+      },
+      {
+        "description": "Confidence out of range (below 0.0)",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello",
+          "confidence": -0.1
+        },
+        "valid": false
+      },
+      {
+        "description": "x_ field with non-object value (string)",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello",
+          "x_bad": "not an object"
+        },
+        "valid": false
+      },
+      {
+        "description": "x_ field with non-object value (boolean)",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello",
+          "x_bad": true
+        },
+        "valid": false
+      },
+      {
+        "description": "Wrong openvip version",
+        "data": {
+          "openvip": "2.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello"
+        },
+        "valid": false
+      },
+      {
+        "description": "partial must be boolean, not string",
+        "data": {
+          "openvip": "1.0",
+          "type": "transcription",
+          "id": "550e8400-e29b-41d4-a716-446655440000",
+          "timestamp": "2026-02-06T10:30:00Z",
+          "text": "hello",
+          "partial": "true"
+        },
+        "valid": false
+      }
+    ]
+  }
+]
