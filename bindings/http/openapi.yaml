@@ -314,6 +314,47 @@ components:
           type: string
           format: uuid
           description: ID of the parent message (OpenTelemetry-style)
+        x_input:
+          type: object
+          description: "Standard extension: text input behavior"
+          required:
+            - submit
+            - newline
+          properties:
+            submit:
+              type: boolean
+              description: If true, submit/send the text (e.g., press Enter)
+            newline:
+              type: boolean
+              description: If true, insert a line break (e.g., Shift+Enter)
+            trigger:
+              type: string
+              description: The voice phrase that triggered this action
+            confidence:
+              type: number
+              minimum: 0
+              maximum: 1
+              description: Confidence score for the trigger (0.0–1.0)
+            source:
+              type: string
+              description: Generator identifier — free-form string identifying the component that produced this extension
+        x_agent_switch:
+          type: object
+          description: "Standard extension: agent routing"
+          required:
+            - target
+          properties:
+            target:
+              type: string
+              description: Identifier of the agent to switch to
+            confidence:
+              type: number
+              minimum: 0
+              maximum: 1
+              description: Confidence score (0.0–1.0)
+            source:
+              type: string
+              description: Generator identifier — free-form string identifying the component that produced this extension
       additionalProperties: true
 
     Transcription:

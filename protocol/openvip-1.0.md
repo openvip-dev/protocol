@@ -286,12 +286,13 @@ Controls how transcribed text should be delivered to a text-based interface
 (e.g., text box, terminal, chat input). This extension is relevant when the
 consumer operates a text entry area.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `submit` | boolean | If `true`, submit/send the text (e.g., press Enter) |
-| `newline` | boolean | If `true`, insert a line break (e.g., Shift+Enter) |
-| `trigger` | string | The voice phrase that triggered this action |
-| `confidence` | float | Confidence score (0.0–1.0) |
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `submit` | boolean | **yes** | If `true`, submit/send the text (e.g., press Enter) |
+| `newline` | boolean | **yes** | If `true`, insert a line break (e.g., Shift+Enter) |
+| `trigger` | string | no | The voice phrase that triggered this action |
+| `confidence` | float | no | Confidence score for the trigger (0.0–1.0) |
+| `source` | string | no | Generator identifier — free-form string identifying the component that produced this extension (e.g., `"my-submit-filter/1.2"`, `"GestureKit/2.1"`) |
 
 `submit` and `newline` are **not mutually exclusive** — a message can request
 both a newline and a submit.
@@ -307,7 +308,8 @@ both a newline and a submit.
     "submit": true,
     "newline": false,
     "trigger": "ok send",
-    "confidence": 0.95
+    "confidence": 0.95,
+    "source": "my-submit-filter/1.2"
   }
 }
 ```
@@ -320,10 +322,11 @@ ignore this extension.
 Requests switching the active agent. This extension is relevant in multi-agent
 environments where voice commands can redirect input to a different consumer.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `target` | string | Identifier of the agent to switch to |
-| `confidence` | float | Confidence score (0.0–1.0) |
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `target` | string | **yes** | Identifier of the agent to switch to |
+| `confidence` | float | no | Confidence score (0.0–1.0) |
+| `source` | string | no | Generator identifier (same convention as `x_input.source`) |
 
 ```json
 {
@@ -334,7 +337,8 @@ environments where voice commands can redirect input to a different consumer.
   "text": "",
   "x_agent_switch": {
     "target": "claude",
-    "confidence": 0.92
+    "confidence": 0.92,
+    "source": "my-agent-filter/1.0"
   }
 }
 ```
