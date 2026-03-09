@@ -1,0 +1,17 @@
+{
+  "openvip": "1.0",
+  "type": "transcription",
+  "id": "660e8400-e29b-41d4-a716-446655440001",
+  "timestamp": "2026-02-06T10:30:01Z",
+  "text": "ho un bug",
+  "language": "it",
+  "confidence": 0.95,
+  "origin": "myapp/1.0.0",
+  "trace_id": "550e8400-e29b-41d4-a716-446655440000",
+  "parent_id": "550e8400-e29b-41d4-a716-446655440000",
+  "x_input": {
+    "submit": true,
+    "trigger": "invia",
+    "confidence": 0.99
+  }
+}
