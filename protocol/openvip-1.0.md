@@ -426,7 +426,8 @@ available as a universal fallback.
 ## Control Requests
 
 Control requests are sent by agents to the engine to trigger operational
-commands (e.g., start/stop speech recognition, shutdown).
+commands. Standard commands: `stt.start`, `stt.stop`, `ping`.
+Implementations may define additional commands.
 
 ### Required Fields
 
