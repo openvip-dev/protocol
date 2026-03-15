@@ -111,7 +111,6 @@ JSON Schema for validation: [schema/v1.0.json](schema/v1.0.json)
 - Bidirectional communication
 - WebSocket binding
 - Authentication and authorization
-- End-to-end encryption
 
 ## Contributing
 

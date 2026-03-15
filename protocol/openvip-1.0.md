@@ -38,7 +38,6 @@ semantics through extensions.
 - Bidirectional communication (protocol-level request/response semantics)
 - WebSocket binding
 - Authentication and authorization
-- End-to-end encryption
 
 ## Binding
 
