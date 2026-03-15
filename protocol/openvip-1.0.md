@@ -288,14 +288,13 @@ consumer operates a text entry area.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `submit` | boolean | **yes** | If `true`, submit/send the text (e.g., press Enter) |
-| `newline` | boolean | **yes** | If `true`, insert a line break (e.g., Shift+Enter) |
+| `ops` | array of strings | **yes** | Ordered list of input operations to perform. Values: `"submit"` (press Enter), `"newline"` (Shift+Enter) |
 | `trigger` | string | no | The voice phrase that triggered this action |
 | `confidence` | float | no | Confidence score for the trigger (0.0–1.0) |
 | `source` | string | no | Generator identifier — free-form string identifying the component that produced this extension (e.g., `"my-submit-filter/1.2"`, `"GestureKit/2.1"`) |
 
-`submit` and `newline` are **not mutually exclusive** — a message can request
-both a newline and a submit.
+`ops` is an ordered list — operations are applied in sequence. A single message
+can request multiple operations (e.g., `["newline", "submit"]`).
 
 ```json
 {
@@ -305,8 +304,7 @@ both a newline and a submit.
   "timestamp": "2026-02-06T10:30:00Z",
   "text": "fix the login bug",
   "x_input": {
-    "submit": true,
-    "newline": false,
+    "ops": ["submit"],
     "trigger": "ok send",
     "confidence": 0.95,
     "source": "my-submit-filter/1.2"
