@@ -479,11 +479,7 @@ components:
           description: Unique request identifier (UUID v4)
         command:
           type: string
-          description: Command to execute
-          enum:
-            - stt.start
-            - stt.stop
-            - engine.shutdown
+          description: "Command to execute. Standard commands: stt.start, stt.stop, ping. Implementations may define additional commands."
 
     Response:
       type: object
