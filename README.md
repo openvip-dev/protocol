@@ -120,6 +120,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 This specification is licensed under the [MIT License](LICENSE).
 
+## Trademarks
+
+OpenVIP™ is a trademark of Sitlab Limited. The OpenVIP name and logo are
+© 2026 Sitlab Limited. The protocol specification is MIT licensed — anyone
+can implement it freely. The trademark protects the name and logo, not the
+technology.
+
 ---
 
 *OpenVIP is an open project. Contributions welcome!*
